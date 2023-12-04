@@ -1,0 +1,5 @@
+epoch 100
+batch 2
+adding 3 and 6
+
+pretrain weight detect21

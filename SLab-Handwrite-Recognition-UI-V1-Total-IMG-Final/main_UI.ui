@@ -1184,7 +1184,7 @@ font: 26pt &quot;Mongolian Baiti&quot;;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QFrame" name="frame_27">
+                  <widget class="QFrame" name="frame_shoew_img">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -1374,8 +1374,8 @@ font: 26pt &quot;Mongolian Baiti&quot;;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>297</width>
-                      <height>495</height>
+                      <width>1097</width>
+                      <height>531</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_25">
@@ -2235,8 +2235,8 @@ QPushButton:pressed {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>143</width>
-                      <height>182</height>
+                      <width>974</width>
+                      <height>482</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_33">

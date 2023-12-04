@@ -1,6 +1,6 @@
 import sys
 import cv2
-from PyQt5 import QtWidgets, uic, QtCore, QtGui
+from PyQt5 import QtWidgets, uic, QtCore
 from PyQt5.QtWidgets import *
 from pathlib import Path
 import numpy as np
@@ -9,7 +9,6 @@ from PyQt5.QtCore import QTimer
 import cv2
 from PyQt5 import QtCore, QtWidgets, uic
 from yolov5.detect2 import run
-from PyQt5.QtWidgets import QLabel
 
 
 
@@ -58,33 +57,31 @@ class Ui(QtWidgets.QMainWindow):
 
     def button_connector(self):
        
-        self.live.clicked.connect(self.start_selection2)
+        self.live.clicked.connect(self.start_selection)
 
     def start_selection(self):
         self.picktimer = QTimer()
         self.picktimer.timeout.connect(self.main)
         self.picktimer.start()
 
-    def start_selection2(self):
+    def start_selection(self):
        
         self.show_farme()
 
 
-    def show_image(self, frame, labelshow):  # show the frame
+    def show_image(self, frame, labelshow):  # Show the frame
         img = frame
-        # print()
         img = cv2.resize(
             img,
-            (1000, 280),  # this is relative to the camera
+            (1000, 280),  # This is relative to the camera
             interpolation=cv2.INTER_AREA,
         )
 
         try:
             h, w, ch = img.shape
-            # print(img.shape)
+           
         except:
             h, w = img.shape
-            # print(img.shape)
             img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
             ch = 3
         bytes_per_line = ch * w
@@ -93,7 +90,7 @@ class Ui(QtWidgets.QMainWindow):
             w,
             h,
             bytes_per_line,
-            QImage.Format_BGR888,  # This is used to show the heatmap of the defect in output
+            QImage.Format_BGR888,  
         )
 
 
@@ -122,20 +119,18 @@ class Ui(QtWidgets.QMainWindow):
             "All Files (*);;Python Files (*.py);;Text Files (*.txt)",
         )
         imagePath = fname[0]
-        pixmap = QPixmap(imagePath)
         img = cv2.imread(imagePath)
 
         cv2.imwrite("yolov5\\data\\slab\\slab\\1.jpg", img)
 
         self.Total_string = ""
-        lay = QVBoxLayout(self.frame_27)
-        title_label = QLabel()
+        lay = QVBoxLayout(self.frame_shoew_img)
         im, Final_list_cls, Final_img_detect_bounding_box = run()
         Index_y = [
             Final_img_detect_bounding_box[i][3]
             for i in range(0, len(Final_img_detect_bounding_box))
         ]
-        Sort_Index_y = np.argsort(Index_y)  # I add it  to sort the the list value
+        Sort_Index_y = np.argsort(Index_y)  # It was added to sort the list value
         Final_list_cls_sorted = [Final_list_cls[i] for i in Sort_Index_y]
         Final_img_detect_bounding_box_0 = [
             Final_img_detect_bounding_box[i][0] for i in Sort_Index_y
@@ -162,7 +157,7 @@ class Ui(QtWidgets.QMainWindow):
                 (0, 0, 255),
                 3,
             )
-            # uncomment to show label index
+            
             cv2.putText(
                 img,
                 str(i + 1),
@@ -195,11 +190,10 @@ class Ui(QtWidgets.QMainWindow):
             w,
             h,
             bytes_per_line,
-            QImage.Format_BGR888,  # This is used to show the heatmap of the defect in output
+            QImage.Format_BGR888, 
         )
 
         self.Showlive.setPixmap(QPixmap.fromImage(convert_to_Qt_format))  # remove it
-
         self.Message_LB.setText(self.Total_string)
         self.setLayout(lay)
 
