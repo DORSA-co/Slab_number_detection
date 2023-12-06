@@ -59,11 +59,7 @@ class Ui(QtWidgets.QMainWindow):
        
         self.live.clicked.connect(self.start_selection)
 
-    def start_selection(self):
-        self.picktimer = QTimer()
-        self.picktimer.timeout.connect(self.main)
-        self.picktimer.start()
-
+   
     def start_selection(self):
        
         self.show_farme()
@@ -124,7 +120,7 @@ class Ui(QtWidgets.QMainWindow):
         cv2.imwrite("yolov5\\data\\slab\\slab\\1.jpg", img)
 
         self.Total_string = ""
-        lay = QVBoxLayout(self.frame_shoew_img)
+        lay = QVBoxLayout(self.frame_show_img)
         im, Final_list_cls, Final_img_detect_bounding_box = run()
         Index_y = [
             Final_img_detect_bounding_box[i][3]
