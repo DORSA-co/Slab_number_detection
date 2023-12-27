@@ -114,7 +114,10 @@ class Ui(QtWidgets.QMainWindow):
             "",
             "All Files (*);;Python Files (*.py);;Text Files (*.txt)",
         )
+        if  fname[0] == "" :
+            return
         imagePath = fname[0]
+
         img = cv2.imread(imagePath)
 
         cv2.imwrite("yolov5\\data\\slab\\slab\\1.jpg", img)

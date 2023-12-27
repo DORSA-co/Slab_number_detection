@@ -895,7 +895,7 @@ QPushButton:pressed {
                           <cursorShape>PointingHandCursor</cursorShape>
                          </property>
                          <property name="toolTip">
-                          <string>Show Live</string>
+                          <string>Search IMG</string>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">
